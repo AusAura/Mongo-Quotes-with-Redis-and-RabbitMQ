@@ -5,7 +5,7 @@ FILE_NAME_1 = 'authors.json'
 FILE_NAME_2 = 'quotes.json'
 
 def read_json(file_name):
-    with open(file_name, 'r') as fh:
+    with open(file_name, 'r', encoding='UTF-8') as fh:
         result = json.load(fh)   
     return result
 

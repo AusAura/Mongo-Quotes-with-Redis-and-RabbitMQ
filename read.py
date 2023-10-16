@@ -21,7 +21,7 @@ def get_all_quotes(name: str) -> list:
     for item in author:
         author_id = item.id
 
-    quotes = Quote.objects(author=author_id, quote__contains='UTF-8')
+    quotes = Quote.objects(author=author_id)
     quotes_list = []
     for item in quotes:
         quotes_list.append(item.quote)
@@ -31,7 +31,7 @@ def get_all_quotes(name: str) -> list:
 @cache
 def get_quotes_by_tag(tag):
     print(f'Getting quotes by tag from DB: {tag}')
-    quotes = Quote.objects(tags__name__startswith=tag, quote__contains='UTF-8')
+    quotes = Quote.objects(tags__name__startswith=tag)
 
     quotes_list = []
     for item in quotes:
@@ -42,7 +42,7 @@ def get_quotes_by_tag(tag):
 @cache
 def get_quotes_by_all_tags(tag_list):
     print(f'Getting quotes by tag combination from DB: {tag_list}')
-    quotes = Quote.objects(tags__name__in=tag_list, quote__contains='UTF-8')
+    quotes = Quote.objects(tags__name__in=tag_list)
 
     quotes_list = []
     for item in quotes:
